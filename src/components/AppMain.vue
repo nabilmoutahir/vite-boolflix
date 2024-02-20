@@ -93,7 +93,10 @@ export default {
                     Lingua: <span :class="langFlag(movie.original_language)"></span>
                 </li>
 
-                <li>Voto: {{ Math.ceil(movie.vote_average / 2) }}</li>
+                <li>
+                    Voto:
+                <i v-for="star in 5" :class="star <= Math.ceil(movie.vote_average / 2) ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="text-warning"></i>
+                </li>
 
                 <li>Poster:
                     <div>
