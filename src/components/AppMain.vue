@@ -18,7 +18,7 @@ export default {
     },
 
     methods: {
-
+        // SEARCH ALL MEDIAS
         searchAllMedia() {
             this.searchMedia();
             this.searchMediaTv();
@@ -83,6 +83,7 @@ export default {
         <!-- MOVIES -->
         <div>
             <h2>Movies</h2>
+            <!-- V-FOR -->
             <ul v-for="movie in store.movies">
                 <li>Titolo: {{ movie.title }}</li>
 
@@ -92,7 +93,7 @@ export default {
                     Lingua: <span :class="langFlag(movie.original_language)"></span>
                 </li>
 
-                <li>Voto: {{ movie.vote_average }}</li>
+                <li>Voto: {{ Math.ceil(movie.vote_average / 2) }}</li>
 
                 <li>Poster:
                     <div>
@@ -102,8 +103,10 @@ export default {
             </ul>
         </div>
 
+        <!-- TV SHOWS -->
         <div>
             <h2>Tv Shows</h2>
+            <!-- V-FOR -->
             <ul v-for="tv in store.tvs">
                 <li>Titolo: {{ tv.name }}</li>
 
@@ -113,7 +116,7 @@ export default {
                     Lingua: <span :class="langFlag(tv.original_language)"></span>
                 </li>
 
-                <li>Voto: {{ tv.vote_average }}</li>
+                <li>Voto: {{ Math.ceil(tv.vote_average / 2) }}</li>
 
                 <li>Poster:
                     <div>
