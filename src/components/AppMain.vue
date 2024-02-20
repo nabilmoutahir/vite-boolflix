@@ -73,7 +73,7 @@ export default {
             </div>
 
             <div>
-                <input type="text" v-model="searchedMedia">
+                <input @keyup.enter="searchAllMedia()" type="text" v-model="searchedMedia">
                 <button @click="searchAllMedia()">SEARCH</button>
             </div>
         </div>
@@ -84,26 +84,30 @@ export default {
         <div>
             <h2>Movies</h2>
             <!-- V-FOR -->
-            <ul v-for="movie in store.movies">
-                <li>Titolo: {{ movie.title }}</li>
+            <div>
+                <div>
+                    <ul v-for="movie in store.movies">
+                        <li>Titolo: {{ movie.title }}</li>
 
-                <li>Titolo Originale: {{ movie.original_title }}</li>
+                        <li>Titolo Originale: {{ movie.original_title }}</li>
 
-                <li>
-                    Lingua: <span :class="langFlag(movie.original_language)"></span>
-                </li>
+                        <li>
+                            Lingua: <span :class="langFlag(movie.original_language)"></span>
+                        </li>
 
-                <li>
-                    Voto:
-                <i v-for="star in 5" :class="star <= Math.ceil(movie.vote_average / 2) ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="text-warning"></i>
-                </li>
+                        <li>
+                            Voto:
+                        <i v-for="star in 5" :class="star <= Math.ceil(movie.vote_average / 2) ? 'fa-solid fa-star' : 'fa-regular fa-star'" class="text-warning"></i>
+                        </li>
 
-                <li>Poster:
-                    <div>
-                        <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
-                    </div>
-                </li>
-            </ul>
+                        <li>Poster:
+                            <div>
+                                <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- TV SHOWS -->
@@ -139,6 +143,13 @@ export default {
         justify-content: space-between;
         align-items: center;
         background-color: black;
+        height: 100px;
+    }
+
+    main {
+        min-height: calc(100vh - 100px);
+        color: white;
+        background-color: gray;
     }
 
 </style>
