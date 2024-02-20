@@ -82,11 +82,11 @@ export default {
     <main>
         <!-- MOVIES -->
         <div>
-            <h2>Movies</h2>
+            <h2 class="px-5">Movies</h2>
             <!-- V-FOR -->
             <div>
-                <div>
-                    <ul v-for="movie in store.movies">
+                <div class="d-flex flex-wrap">
+                    <ul class="p-5 " v-for="movie in store.movies">
                         <li>Titolo: {{ movie.title }}</li>
 
                         <li>Titolo Originale: {{ movie.original_title }}</li>
@@ -112,25 +112,28 @@ export default {
 
         <!-- TV SHOWS -->
         <div>
-            <h2>Tv Shows</h2>
+            <h2 class="px-5">Tv Shows</h2>
             <!-- V-FOR -->
-            <ul v-for="tv in store.tvs">
-                <li>Titolo: {{ tv.name }}</li>
+            <div class="d-flex flex-wrap">
+                <ul class="p-5" v-for="tv in store.tvs">
+                    <li>Titolo: {{ tv.name }}</li>
 
-                <li>Titolo Originale: {{ tv.original_name }}</li>
+                    <li>Titolo Originale: {{ tv.original_name }}</li>
 
-                <li>
-                    Lingua: <span :class="langFlag(tv.original_language)"></span>
-                </li>
+                    <li>
+                        Lingua: <span :class="langFlag(tv.original_language)"></span>
+                    </li>
 
-                <li>Voto: {{ Math.ceil(tv.vote_average / 2) }}</li>
+                    <li>Voto: {{ Math.ceil(tv.vote_average / 2) }}</li>
 
-                <li>Poster:
-                    <div>
-                        <img :src="'https://image.tmdb.org/t/p/w342/' + tv.poster_path" alt="">
-                    </div>
-                </li>
-            </ul>
+                    <li>Poster:
+                        <div>
+                            <img :src="'https://image.tmdb.org/t/p/w342/' + tv.poster_path" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
 
     </main>
@@ -150,6 +153,10 @@ export default {
         min-height: calc(100vh - 100px);
         color: white;
         background-color: gray;
+    }
+
+    ul {
+        width: calc(100% / 3);
     }
 
 </style>
