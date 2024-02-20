@@ -8,14 +8,20 @@ export default {
 
     data() {
         return {
+           
+            searchedMedia:'',
 
+            store,
+
+            apiKey: store.apiKey,
         }
     },
 
     methods: {
-        searchContent() {
-            axios.get('...').then((response) => {
-                console.log(response.data)
+        searchMedia() {
+            axios.get('https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey + this.searchedMedia).then((response) => {
+                console.log(response.data);
+                store.movie = response.data
             })
         }
     },
@@ -34,8 +40,8 @@ export default {
             </div>
 
             <div>
-                <input type="text">
-                <button @click="searchContent()">SEARCH</button>
+                <input type="text" v-model="searchedMedia">
+                <button @click="searchMedia()">SEARCH</button>
             </div>
         </div>
     </nav>
