@@ -8,10 +8,8 @@
             return {
                 store,
 
-                
             }
         },
-
 
         components: { AppHeader }
 
